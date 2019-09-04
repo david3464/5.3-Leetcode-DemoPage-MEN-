@@ -6,12 +6,14 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var expressLayouts = require('express-ejs-layouts');
 var cors = require('cors');
-
-
-
+var mongoose = require('mongoose');
+mongoose.connect('mongodb+srv://david3464:421173464@project-1-ci1q1.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true }, (err) => {
+  if (!err) { console.log('MongoDB Connection Succeeded.') }
+  else { console.log('Error in DB connection : ' + err) }
+  });
 
 var indexRouter = require('./routes/index');
-var demoRouter = require('./routes/demo');
+var foundationRouter = require('./routes/foundation');
 
 var app = express();
 
@@ -33,7 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
 app.use('/', indexRouter);
-app.use('/demo', demoRouter);
+app.use('/foundation', foundationRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
