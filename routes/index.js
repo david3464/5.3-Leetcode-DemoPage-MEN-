@@ -19,12 +19,16 @@ router.get('/about', function(req, res, next) {
 
 //router address localhost:4121/demo
 //descriptions: Home Page
-//comments: show all category
+//comments: show all category and search function for specific category
 router.get('/demo', async (req, res, next)=> {
+
   try {
-    const categories = await Category.find({});
+    const categories = await Category.find({'category_name':'Foundation'});
     console.log(categories)
-    res.render('demo/homepage', { categories : categories })
+    res.render('demo/homepage', { 
+      categories : categories, 
+
+    })
   }
   catch {
     res.redirect('/')
