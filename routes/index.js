@@ -31,14 +31,14 @@ router.get('/demo', async (req, res, next)=> {
   }
 });
 
-//router address localhost:3000/demo
+//router address localhost:4121/demo
 //descriptions: Register Demo Page
 //comments: show register demo form
 router.get('/newdemo', function(req, res, next) {
   res.render('demo/register_demo', { category: new Category() });
 });
 
-//router address localhost:3000/demo
+//router address localhost:4121/demo
 //descriptions: Obtain Registered Demo Information
 //comments: get all required infromation
 router.post('/newdemo', async (req, res, next)=> {
