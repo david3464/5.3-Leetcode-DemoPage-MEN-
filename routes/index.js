@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
 //descriptions: Test Page
 //comments:for testing purpose
 router.get('/about', function(req, res, next) {
-  res.render('about', { layout: 'hero_layout' });
+  res.render('about');
 });
 
 //router address localhost:3000/demo
@@ -35,7 +35,7 @@ router.get('/demo', async (req, res, next)=> {
 //descriptions: Register Demo Page
 //comments: show register demo form
 router.get('/newdemo', function(req, res, next) {
-  res.render('demo/register', { category: new Category() });
+  res.render('demo/register_demo', { category: new Category() });
 });
 
 //router address localhost:3000/demo
@@ -48,7 +48,7 @@ router.post('/newdemo', async (req, res, next)=> {
   })
   try {  
         const newCategory = await category.save()
-        res.redirect('/demo')
+        res.redirect('/newdemo')
   } catch {
           res.render('/', {
           category: category,

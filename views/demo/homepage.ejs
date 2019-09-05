@@ -5,8 +5,8 @@
             <th scope="col">#</th>
             <th scope="col">Category</th>
             <th scope="col">Type</th>
+            <th scope="col">Join</th>
             <th scope="col">Link</th>
-            <th scope="col">Join Date</th>
           </tr>
         </thead>
         <tbody>
@@ -16,7 +16,7 @@
               <td><%= categories[i].category_name%></td>
               <td><%= categories[i].type_name%></td>
               <td><%= categories[i].date%></td>              
-              <td>link</td>
+              <td><a href="/category/<%= categories[i].category_name%>/<%= categories[i].type_name%>"><%= categories[i].category_name%>/<%= categories[i].type_name%></a></td>
             </tr>
         <% } %>
         </tbody>

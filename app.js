@@ -13,7 +13,8 @@ mongoose.connect('mongodb+srv://david3464:421173464@project-1-ci1q1.mongodb.net/
   });
 
 var indexRouter = require('./routes/index');
-var foundationRouter = require('./routes/foundation');
+var categoryRouter = require('./routes/category');
+var questionRouter = require('./routes/question');
 
 var app = express();
 
@@ -35,7 +36,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
 app.use('/', indexRouter);
-app.use('/foundation', foundationRouter);
+app.use('/category', categoryRouter);
+app.use('/question', questionRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
