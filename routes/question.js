@@ -7,7 +7,7 @@ var router = express.Router();
 //descriptions: Register New Question
 //comments: show register demo form
 router.get('/new', function(req, res, next) {
-    res.render('question/register_demo', { question: new Question() });
-  });
+    res.render('question/register_question');
+});
 
 module.exports = router;

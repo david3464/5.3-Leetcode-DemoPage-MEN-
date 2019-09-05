@@ -7,7 +7,7 @@ var router = express.Router();
 //descriptions: Show Specific Category
 //comments:demo all the question belong to this category
 router.get('/:category_name/:type_name', function(req, res, next) {
-  res.render('about');
+  res.render('question/question_list');
 });
 
 module.exports = router;
