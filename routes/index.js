@@ -21,13 +21,17 @@ router.get('/about', function(req, res, next) {
 //descriptions: Home Page
 //comments: show all category and search function for specific category
 router.get('/demo', async (req, res, next)=> {
-
+  var searchOptions = {}
+  if (req.query.category_name != null && req.query.category_name !== '') {
+    searchOptions.category_name = new RegExp(req.query.category_name, 'i')
+  }
   try {
-    const categories = await Category.find({'category_name':'Foundation'});
-    console.log(categories)
+    console.log(searchOptions)
+    const categories = await Category.find(searchOptions);
+    // console.log(categories)
     res.render('demo/homepage', { 
       categories : categories, 
-
+      searchOptions : req.query
     })
   }
   catch {
