@@ -19,11 +19,11 @@ router.get('/', async (req, res, next)=> {
     searchOptions.category_name = new RegExp(req.query.category_name, 'i')
   }
   try {
-    console.log(searchOptions)
+    // console.log(searchOptions)
     const categories = await Category.find(searchOptions);
     // console.log(categories)
     res.render('category/homepage', { 
-      categories : categories, 
+      categories : categories,
       searchOptions : req.query
     })
   }
