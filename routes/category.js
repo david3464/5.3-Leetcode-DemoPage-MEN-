@@ -40,7 +40,7 @@ router.get('/new', function(req, res, next) {
 });
 
 
-//router address localhost:behind the scene
+//router address behind the scene
 //descriptions: Obtain Registered Demo Information
 //comments: get all required infromation
 router.post('/new', async (req, res, next)=> {
