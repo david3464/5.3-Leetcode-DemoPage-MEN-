@@ -6,6 +6,8 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var expressLayouts = require('express-ejs-layouts');
 var cors = require('cors');
+var fs = require('fs');
+
 var mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://david3464:421173464@project-1-ci1q1.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true }, (err) => {
   if (!err) { console.log('MongoDB Connection Succeeded.') }

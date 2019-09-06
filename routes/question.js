@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-
+Category = require('../models/Category');
+Question = require('../models/Question');
 // app.use('/question', questionRouter);
 
 
@@ -14,15 +15,29 @@ router.get('/', function(req, res, next) {
 //router address localhost:4121/question/new
 //descriptions: Register New Question
 //comments: show register question form
-router.get('/new', function(req, res, next) {
-    res.render('question/register_question');
+router.get('/new', async (req, res, next)=> {
+    try {
+        const categories = await Category.find({})
+        const question = new Question()
+        // console.log(categories)
+        res.render('question/register_question', { 
+            question : question,
+            categories : categories
+        });
+
+    } 
+    catch {
+            (err) => console.log(err);
+            res.render('/question')
+    }
 });
 
 //router address behind the scene
 //descriptions: Obtain Registered Question Information
 //comments: get all required infromation
-router.get('/new', function(req, res, next) {
-    res.render('question/register_question');
+router.post('/new', function(req, res, next) {        
+    console.log(req.body);
+    res.send('Created ');
 });
 
 module.exports = router;

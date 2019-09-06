@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+Category = require('../models/Category');
 // app.use('/category', categoryRouter);
 
 //router address localhost:4121/category/:category_name/:type_name
@@ -28,6 +28,7 @@ router.get('/', async (req, res, next)=> {
     })
   }
   catch {
+    (err) => console.log(err);
     res.redirect('/')
   }
 });
@@ -51,12 +52,14 @@ router.post('/new', async (req, res, next)=> {
   try {  
         const newCategory = await category.save()
         res.redirect('/category')
-  } catch {
-          res.render('category/register_type', {
-          category: category,
-          error: 'Error in Creating Author'
-          })
-  }
+  } 
+  catch {
+        (err) => console.log(err);
+        res.render('category/register_type', {
+        category: category,
+        error: 'Error in Creating Author'
+        })
+}
 });
 
 

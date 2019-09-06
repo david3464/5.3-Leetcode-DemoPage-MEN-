@@ -11,11 +11,11 @@ const QuestionSchema = new Schema({
                 required: true
         },
         type : {
-                type: mongoose.Schema.type.ObjectID,
+                type: mongoose.Schema.Types.ObjectId,
                 required: true,
                 ref: 'Category'
         },
-        Description : {
+        description : {
                 type: String
         },
         analyze : {
