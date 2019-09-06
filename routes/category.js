@@ -27,13 +27,13 @@ router.get('/', async (req, res, next)=> {
       searchOptions : req.query
     })
   }
-  catch {
-    (err) => console.log(err);
-    res.redirect('/')
+  catch(err) {
+              console.log('err during during 4121/category '+err);
+              res.redirect('/')
   }
 });
 
-//router address localhost:4121/newdemo
+//router address localhost:4121/category/new
 //descriptions: Register Demo Page
 //comments: show register demo form
 router.get('/new', function(req, res, next) {
@@ -53,13 +53,13 @@ router.post('/new', async (req, res, next)=> {
         const newCategory = await category.save()
         res.redirect('/category')
   } 
-  catch {
-        (err) => console.log(err);
+  catch(err) {
+        console.log('err during during 4121/category/new create new category '+err);
         res.render('category/register_type', {
         category: category,
         error: 'Error in Creating Author'
         })
-}
+  }
 });
 
 

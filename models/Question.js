@@ -32,12 +32,11 @@ const QuestionSchema = new Schema({
         },
         create_date : {
                 type: Date,
-                required:true,
+                required: true,
                 default:Date.now
         },
         coverImageName: {
-                type: String,
-                required: true,
+                type: String
         },
 
 });

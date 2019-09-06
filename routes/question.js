@@ -24,23 +24,38 @@ router.get('/new', async (req, res, next)=> {
             question : question,
             categories : categories
         });
-
     } 
-    catch {
-            (err) => console.log(err);
-            res.render('/question')
+    catch(err) {
+                console.log('err during 4121/question/new '+err);
+                res.render('/question')
     }
 });
 
 //router address behind the scene
 //descriptions: Obtain Registered Question Information
 //comments: get all required infromation
-router.post('/new', function(req, res, next) {        
+router.post('/new', async (req, res, next)=> {        
     const question = new Question ({
-        title: req.body.title
+        title: req.body.title,
+        number: req.body.number,
+        type: req.body.type,
+        description: req.body.description
     })
-    res.send('Created ');
-    console.log(question.title)
+    console.log(question)
+    const categories = await Category.find({})
+    try {  
+        const newQuestion = await question.save()
+        
+        res.redirect('/question')
+    }
+    catch(err){
+                console.log('err during during 4121/question/new create new qustion '+err);
+                res.render('question/register_question', {
+                categories: categories,
+                question: question,
+                error: 'Error in Creating New Question'
+                })
+    }
 });
 
 module.exports = router;
