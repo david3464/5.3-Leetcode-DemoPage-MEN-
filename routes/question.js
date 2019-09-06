@@ -9,14 +9,20 @@ Question = require('../models/Question');
 //descriptions: Demo Question
 //comments: show all question and search function for specific question
 router.get('/', async (req, res, next)=> { 
-    let searchOptions = {}
+    let query = Question.find()
     if (req.query.title != null && req.query.title !== '') {
-      searchOptions.title = new RegExp(req.query.title, 'i')
+        query = query.regex('title', new RegExp(req.query.title, 'i'))
+    }
+    if (req.query.number != null && req.query.number !== '') {
+        query = query.lte('number', req.query.number)
+    }
+    if (req.query.number != null && req.query.number !== '') {
+        query = query.gte('number', req.query.number)
     }
     try{
-        console.log(searchOptions)
-        const questions = await Question.find(searchOptions);
-        console.log(questions)
+        console.log(query)
+        const questions = await query.exec();
+        // console.log(questions)
         res.render('question/question_list', { 
           questions : questions,
           searchOptions : req.query
