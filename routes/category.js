@@ -23,7 +23,7 @@ router.get('/', async (req, res, next)=> {
   }
   try {
     console.log(searchOptions)
-    const categories = await Category.find(searchOptions);
+    const categories = await Category.find(searchOptions).sort({category_name:'asc',type_name:'asc'});
     // console.log(categories)
     res.render('category/homepage', { 
       categories : categories,
@@ -49,8 +49,8 @@ router.get('/new', function(req, res, next) {
 //comments: get all required infromation
 router.post('/new', async (req, res, next)=> {
   const category = new Category ({
-    category_name: req.body.category_name,
-    type_name: req.body.type_name
+        category_name: req.body.category_name,
+        type_name: req.body.type_name
   })
   try {  
         const newCategory = await category.save()

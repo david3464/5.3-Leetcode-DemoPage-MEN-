@@ -9,9 +9,9 @@ Question = require('../models/Question');
 //descriptions: Demo Question
 //comments: show all question and search function for specific question
 router.get('/', async (req, res, next)=> { 
-    let query = Question.find()
+    let query = Question.find().sort({number:'asc'})
     if (req.query.title != null && req.query.title !== '') {
-        query = query.regex('title', new RegExp(req.query.title, 'i'))
+        query = query.regex('title', new RegExp(req.query.title), 'i')
     }
     if (req.query.number != null && req.query.number !== '') {
         query = query.lte('number', req.query.number)
