@@ -36,8 +36,11 @@ router.get('/new', async (req, res, next)=> {
 //descriptions: Obtain Registered Question Information
 //comments: get all required infromation
 router.post('/new', function(req, res, next) {        
-    console.log(req.body);
+    const question = new Question ({
+        title: req.body.title
+    })
     res.send('Created ');
+    console.log(question.title)
 });
 
 module.exports = router;

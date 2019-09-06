@@ -1,13 +1,6 @@
 <div class="form-group">
     <label for="title">Title</label>
-    <input
-        type="text"
-        id="title"
-        name="title"
-        class="form-control"
-        placeholder="Enter Question Title"
-        value="<%= question.title %>"
-    />
+    <input type="text" id="title" name="title" class="form-control" placeholder="Enter Question Title" value="<%= question.title %>"/>
 </div>
 <div class="form-group">
     <label for="exampleFormControlSelect1">Category-Type</label>
@@ -23,35 +16,22 @@
 </div>
 <div class="form-group">
     <label for="number">Question Number</label>
-    <input
-        type="number"
-        id="number"
-        name="number"
-        class="form-control"
-        placeholder="Enter Question Number"
-        value="<%= question.number %>"
-    />
+    <input type="number" id="number" name="number" class="form-control" placeholder="Enter Question Number" value="<%= question.number %>"/>
 </div>
 <div class="form-group">
-    <label for="number">Question Number</label>
-    <input
-        type="number"
-        id="number"
-        name="number"
-        class="form-control"
-        placeholder="Enter Question Number"
-        value="<%= question.number %>"
-    />
+    <label for="description">Description</label>
+    <textarea class="form-control" name="description"><%= question.description %></textarea>
 </div>
 <div class="form-group">
-    <label for="description">Tips</label>
-    <input
-        type="text"
-        id="tip"
-        name="description"
-        class="form-control"
-        placeholder="Enter Question Description"
-        value="<%= question.description %>"
-    />
+    <label for="analyze">Analyze</label>
+    <textarea class="form-control" name="analyze"><%= question.analyze %></textarea>
+</div>
+<div class="form-group">
+    <label for="solution">Solution</label>
+    <textarea class="form-control" name="solution"><%= question.solution %></textarea>
+</div>
+<div class="form-group">
+    <label for="tip">Tip</label>
+    <input type="text" id="tip" name="tip" class="form-control" placeholder="Enter Question tip" value="<%= question.tip %>"/>
 </div>
 
