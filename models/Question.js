@@ -4,11 +4,14 @@ const Schema = mongoose.Schema;
 const QuestionSchema = new Schema({
         title : {
                 type: String,
-                required: true
+                required: true,
         },
         number : {
                 type: Number,
-                required: true
+                required: true,
+                min: 1,
+                index: true,
+                unique: true
         },
         type : {
                 type: mongoose.Schema.Types.ObjectId,

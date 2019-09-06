@@ -14,12 +14,15 @@ router.get('/:category_name/:type_name', function(req, res, next) {
 //descriptions: Demo All Category
 //comments: show all category and search function for specific category
 router.get('/', async (req, res, next)=> {
-  var searchOptions = {}
+  let searchOptions = {}
   if (req.query.category_name != null && req.query.category_name !== '') {
     searchOptions.category_name = new RegExp(req.query.category_name, 'i')
   }
+  if (req.query.type_name != null && req.query.type_name !== '') {
+      searchOptions.type_name = new RegExp(req.query.type_name, 'i')
+  }
   try {
-    // console.log(searchOptions)
+    console.log(searchOptions)
     const categories = await Category.find(searchOptions);
     // console.log(categories)
     res.render('category/homepage', { 

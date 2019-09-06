@@ -1,1 +1,37 @@
 question list
+<br><hr>
+  <form action="/question" method="GET">
+    <label>Input Question Name</label>
+    <input type="text" name="title" value="<%=searchOptions.title%>">
+    <button type="submit">Search</button><br>
+    <label>Input Question Number</label>
+    <input type="number" name="number" value="<%=searchOptions.number%>">
+    <button type="submit">Search</button>
+  </form>
+<br><hr>
+<table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Category-Type</th>
+            <th scope="col">Create on</th>
+            <th scope="col">Link</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% for (var i = 0; i <questions.length; i++) {%>
+            <tr>
+              <th scope="row"><%=questions[i].number%></th>
+              <td><%= questions[i].title%></td>
+              <td><%= questions[i].type%></td>      
+              <td><%= questions[i].create_date%></td>
+              <th scope="col"><%=questions[i].number%></th>
+            </tr>
+        <% } %>
+        </tbody>
+</table>
+
+
+
+<script> document.title = 'All Question List Pages' </script>

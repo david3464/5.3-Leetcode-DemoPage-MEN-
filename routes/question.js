@@ -5,11 +5,27 @@ Question = require('../models/Question');
 // app.use('/question', questionRouter);
 
 
-//router address localhost:4121/question/new
-//descriptions: Register New Question
+//router address localhost:4121/question/
+//descriptions: Demo Question
 //comments: show all question and search function for specific question
-router.get('/', function(req, res, next) {
-    res.render('question/question_list');
+router.get('/', async (req, res, next)=> { 
+    let searchOptions = {}
+    if (req.query.title != null && req.query.title !== '') {
+      searchOptions.title = new RegExp(req.query.title, 'i')
+    }
+    try{
+        console.log(searchOptions)
+        const questions = await Question.find(searchOptions);
+        console.log(questions)
+        res.render('question/question_list', { 
+          questions : questions,
+          searchOptions : req.query
+        })
+    }
+    catch(err) {
+        console.log(err)
+    }
+
 });
 
 //router address localhost:4121/question/new

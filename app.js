@@ -13,6 +13,8 @@ mongoose.connect('mongodb+srv://david3464:421173464@project-1-ci1q1.mongodb.net/
   if (!err) { console.log('MongoDB Connection Succeeded.') }
   else { console.log('Error in DB connection : ' + err) }
   });
+mongoose.set('useNewUrlParser',true);
+mongoose.set('useCreateIndex',true);
 
 var indexRouter = require('./routes/index');
 var categoryRouter = require('./routes/category');

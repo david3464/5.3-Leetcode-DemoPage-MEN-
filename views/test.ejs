@@ -1,12 +1,3 @@
-<div class="form-group">
-        <label for="exampleFormControlSelect1">Category-Type</label>
-        <select class="form-control" id="exampleFormControlSelect1" name="type">
-            <% categories.forEach(category => { %>
-                <% if (category.id === question.type) { %> 
-                    <option selected label="<%= category.type_name%>" value="<%=category.id %>">
-                <%} else {%>
-                    <option label="<%= category.type_name%>" value="<%=category.id %>">
-                <% } %>
-            <%})%>
-        </select>
-    </div>
+
+
+<td><a href="/category/<%= categories[i].category_name%>/<%= categories[i].type_name%>"><%= categories[i].category_name%>/<%= categories[i].type_name%></a></td>
