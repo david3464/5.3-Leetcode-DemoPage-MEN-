@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var expressLayouts = require('express-ejs-layouts');
 var cors = require('cors');
 var fs = require('fs');
+var methodOverride = require('method-override');
 
 var mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://david3464:421173464@project-1-ci1q1.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true }, (err) => {
@@ -35,6 +36,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ limit : '10mb', extended: false }));
+app.use(methodOverride('_method'));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());

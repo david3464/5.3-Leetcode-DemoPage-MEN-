@@ -80,4 +80,32 @@ router.post('/new', async (req, res, next)=> {
     }
 });
 
+//router address localhost:4121/question/:id
+//descriptions: Show Detail Question Information
+//comments: Show detail information of a Question
+router.get('/:id', (req, res)=> {
+    res.send('Show question' + req.params.id)
+})
+
+//router address localhost:4121/question/:id
+//descriptions: Show Detail Question Information
+//comments: Show detail information of a Question
+router.get('/:id', (req, res)=> {
+    res.send('Show question' + req.params.id)
+})
+
+//router address localhost:4121/question/:id
+//descriptions: Show Detail Question Information
+//comments: Show detail information of a Question
+router.get('/:id', (req, res)=> {
+    res.send('Show question' + req.params.id)
+})
+
+//router address localhost:4121/question/:id
+//descriptions: Show Detail Question Information
+//comments: Show detail information of a Question
+router.get('/:id', (req, res)=> {
+    res.send('Show question' + req.params.id)
+})
+
 module.exports = router;
