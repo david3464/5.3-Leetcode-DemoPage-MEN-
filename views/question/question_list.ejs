@@ -17,8 +17,9 @@
             <th scope="col">#</th>
             <th scope="col">Title</th>
             <th scope="col">Category-Type</th>
-            <th scope="col">Create on</th>
-            <th scope="col">Link</th>
+            <th scope="col">View</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -27,8 +28,9 @@
               <th scope="row"><%=questions[i].number%></th>
               <td><%= questions[i].title%></td>
               <td><%= questions[i].type%></td>      
-              <td><%= questions[i].create_date%></td>
-              <th scope="col"><%=questions[i].number%></th>
+              <td><a href="/question/<%=questions[i].id%>">View</a></td>
+              <td><a href="/question/<%=questions[i].id%>/edit">Edit</a></td>      
+              <td><form method="post" action="/author/</td>
             </tr>
         <% } %>
         </tbody>

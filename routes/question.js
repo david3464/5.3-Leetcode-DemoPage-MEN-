@@ -90,22 +90,22 @@ router.get('/:id', (req, res)=> {
 //router address localhost:4121/question/:id
 //descriptions: Show Detail Question Information
 //comments: Show detail information of a Question
-router.get('/:id', (req, res)=> {
-    res.send('Show question' + req.params.id)
+router.get('/:id/edit', (req, res)=> {
+    res.send('Edit question' + req.params.id)
 })
 
 //router address localhost:4121/question/:id
 //descriptions: Show Detail Question Information
 //comments: Show detail information of a Question
-router.get('/:id', (req, res)=> {
-    res.send('Show question' + req.params.id)
+router.put('/:id', (req, res)=> {
+    res.send('Update question' + req.params.id)
 })
 
 //router address localhost:4121/question/:id
 //descriptions: Show Detail Question Information
 //comments: Show detail information of a Question
-router.get('/:id', (req, res)=> {
-    res.send('Show question' + req.params.id)
+router.delete('/:id', (req, res)=> {
+    res.send('delete question' + req.params.id)
 })
 
 module.exports = router;
