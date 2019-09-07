@@ -21,6 +21,10 @@ const QuestionSchema = new Schema({
         description : {
                 type: String
         },
+        tip : {
+                type: String,
+                default: 'put your tips here'
+        },
         analyze : {
                 type: String,
                 default: 'put your analyze information here'
@@ -28,10 +32,6 @@ const QuestionSchema = new Schema({
         solution : {
                 type: String,
                 default: 'put your solution here'
-        },
-        tip : {
-                type: String,
-                default: 'put your tips here'
         },
         create_date : {
                 type: Date,

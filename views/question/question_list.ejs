@@ -30,7 +30,8 @@
               <td><%= questions[i].type%></td>      
               <td><a href="/question/<%=questions[i].id%>">View</a></td>
               <td><a href="/question/<%=questions[i].id%>/edit">Edit</a></td>      
-              <td><form method="post" action="/author/</td>
+              <td><%- include('../partials/_delete_form', 
+                             {url :`/question/${questions[i].id}`}) %></td>
             </tr>
         <% } %>
         </tbody>

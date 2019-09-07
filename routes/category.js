@@ -44,11 +44,11 @@ router.get('/new', function(req, res, next) {
 });
 
 
-//router address behind the scene
+//router address behind the scene(localhost:4121/category/new)
 //descriptions: Obtain Registered Demo Information
 //comments: get all required infromation
 router.post('/new', async (req, res, next)=> {
-  const category = new Category ({
+  let category = new Category ({
         category_name: req.body.category_name,
         type_name: req.body.type_name
   })

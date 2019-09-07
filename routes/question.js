@@ -20,8 +20,8 @@ router.get('/', async (req, res, next)=> {
         query = query.gte('number', req.query.number)
     }
     try{
-        console.log(query)
-        const questions = await query.exec();
+        // console.log(query)
+        let questions = await query.exec();
         // console.log(questions)
         res.render('question/question_list', { 
           questions : questions,
@@ -29,7 +29,7 @@ router.get('/', async (req, res, next)=> {
         })
     }
     catch(err) {
-        console.log(err)
+        console.log('err during during 4121/question/ '+err);
     }
 
 });
@@ -39,8 +39,8 @@ router.get('/', async (req, res, next)=> {
 //comments: show register question form
 router.get('/new', async (req, res, next)=> {
     try {
-        const categories = await Category.find({})
-        const question = new Question()
+        let categories = await Category.find({})
+        let question = new Question()
         // console.log(categories)
         res.render('question/register_question', { 
             question : question,
@@ -57,21 +57,21 @@ router.get('/new', async (req, res, next)=> {
 //descriptions: Obtain Registered Question Information
 //comments: get all required infromation
 router.post('/new', async (req, res, next)=> {        
-    const question = new Question ({
+    let question = new Question ({
         title: req.body.title,
         number: req.body.number,
         type: req.body.type,
         description: req.body.description
     })
-    console.log(question)
-    const categories = await Category.find({})
+    // console.log(question)
+    let categories = await Category.find({})
     try {  
         const newQuestion = await question.save()
         
         res.redirect('/question')
     }
     catch(err){
-                console.log('err during during 4121/question/new create new qustion '+err);
+                console.log('err during during 4121/question/new bts '+err);
                 res.render('question/register_question', {
                 categories: categories,
                 question: question,
@@ -90,8 +90,18 @@ router.get('/:id', (req, res)=> {
 //router address localhost:4121/question/:id
 //descriptions: Show Detail Question Information
 //comments: Show detail information of a Question
-router.get('/:id/edit', (req, res)=> {
-    res.send('Edit question' + req.params.id)
+router.get('/:id/edit', async (req, res)=> {
+    try {
+        console.log(req.params.id)
+        let question = await Question.findById(req.params.id)
+        console.log(question.type)
+        let category  = await Category.findById(question.type)
+        console.log(category.type_name)
+        res.render('question/edit_question', { question: question,  category:category });
+    } catch(err) {
+                    console.log('err during during 4121/question/:id/edit '+err);
+                    res.redirect('/question')
+    }
 })
 
 //router address localhost:4121/question/:id
