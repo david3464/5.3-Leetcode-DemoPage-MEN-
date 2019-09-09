@@ -17,8 +17,10 @@
             <th scope="col">#</th>
             <th scope="col">Category</th>
             <th scope="col">Type</th>
-            <th scope="col">Join</th>
             <th scope="col">Link</th>
+            <th scope="col">View</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -26,9 +28,11 @@
             <tr>
               <th scope="row"><%= [i+1]%></th>
               <td><%= categories[i].category_name%></td>
-              <td><%= categories[i].type_name%></td>
-              <td><%= categories[i].date%></td>              
-              <td><a href="/category/<%= categories[i].category_name%>/<%= categories[i].type_name%>"><%= categories[i].category_name%>/<%= categories[i].type_name%></a></td>
+              <td><%= categories[i].type_name%></td>        
+              <td><a href="/category/<%= categories[i].category_name%>/<%= categories[i].type_name%>"><%= categories[i].type_name%> Questions</a></td>
+              <td><a href="/category/<%=categories[i].id%>">View</a></td>
+              <td><a href="/category/<%=categories[i].id%>/edit">Edit</a></td>
+              <td><%- include('../partials/_delete_form', {url: `/category/${categories[i].id}`}) %></td>
             </tr>
         <% } %>
         </tbody>

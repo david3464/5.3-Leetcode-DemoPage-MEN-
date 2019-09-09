@@ -3,13 +3,6 @@ var router = express.Router();
 Category = require('../models/Category');
 // app.use('/category', categoryRouter);
 
-//router address localhost:4121/category/:category_name/:type_name
-//descriptions: Show Specific Category
-//comments:demo all the question belong to this category
-router.get('/:category_name/:type_name', (req, res, next)=> {
-  res.render('question/question_list');
-});
-
 //router address localhost:4121/category
 //descriptions: Demo All Category
 //comments: show all category and search function for specific category
@@ -65,20 +58,46 @@ router.post('/new', async (req, res, next)=> {
   }
 });
 
+//router address localhost:4121/category/:id
+//descriptions: Show Detail Question Information
+//comments: Show detail information of a Question
 router.get('/:id', (req, res, next)=> {
   res.send('Show Category' + req.params.id)
 });
 
-router.get('/:id/update', (req, res, next)=> {
-  res.send('Edit Category' + req.params.id)
+//router address localhost:4121/category/:id/edit
+//descriptions: Show Detail Category
+//comments: Show detail type of a Category
+router.get('/:id/edit', async (req, res, next)=> {
+  try {
+    let category = await Category.findById(req.params.id)
+    res.render('category/edit_type', { category: category });
+  } catch(err) {
+    console.log('err during during 4121/category '+err);
+    res.redirect('/')
+
+  }
+
 });
 
+//router address localhost:4121/question/:id (Behind the Scene)
+//descriptions: Update Detail Category-Type Information
+//comments: Change detail information of a Type
 router.put('/:id', (req, res, next)=> {
   res.send('Update Category' + req.params.id)
 });
 
+//router address localhost:4121/question/:id (Behind the Scene)
+//descriptions: Delete Specific Category-Type
+//comments: Detail this type from Category database
 router.delete('/:id', (req, res, next)=> {
   res.send('Delete Category' + req.params.id)
 });
 
+//router address localhost:4121/category/:category_name/:type_name
+//descriptions: Show Specific Category
+//comments:demo all the question belong to this category
+// router.get('/:category_name/:type_name', (req, res, next)=> {
+//   res.render('question/question_list');
+// });
 module.exports = router;

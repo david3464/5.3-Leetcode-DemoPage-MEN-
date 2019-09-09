@@ -2,12 +2,12 @@
     <div class="col-md-6 m-auto">
         <div class="card card-body">
             <h1 class="text-center mb-3">
-                <i class="fas fa-user-plus"></i> Register New Type
+                <i class="fas fa-user-plus"></i> Edit Type Information
                 </h1>
-                <form action="/category/new" method="post">
+                <form action="/category/<%= category.id %>?_method=put" method="post">
                     <%-include('_category_form_fields')%>
                     <a href="/category"> Go Back To Home Page</a>
-                    <button type="submit">Create New Category-Type</button>
+                    <button type="submit">Update Category-Type</button>
                 </form>
             </h1>
         </div>
@@ -15,6 +15,4 @@
 </div>
     
 
-<script> document.title = 'Category Register Pages' </script>
-    
-    
+<script> document.title = 'Category Edit Pages' </script>

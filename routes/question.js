@@ -88,7 +88,7 @@ router.get('/:id', (req, res)=> {
 })
 
 //router address localhost:4121/question/:id
-//descriptions: Show Detail Question Information
+//descriptions: Show Detail Question Form
 //comments: Show detail information of a Question
 router.get('/:id/edit', async (req, res)=> {
     try {
@@ -104,15 +104,15 @@ router.get('/:id/edit', async (req, res)=> {
     }
 })
 
-//router address localhost:4121/question/:id
-//descriptions: Show Detail Question Information
-//comments: Show detail information of a Question
+//router address localhost:4121/question/:id (Behind the Scene)
+//descriptions: Update Detail Question Information
+//comments: Change detail information of a Question
 router.put('/:id', (req, res)=> {
     res.send('Update question' + req.params.id)
 })
 
-//router address localhost:4121/question/:id
-//descriptions: Show Detail Question Information
+//router address localhost:4121/question/:id (Behind the Scene)
+//descriptions: Delete Specific Question Information
 //comments: Show detail information of a Question
 router.delete('/:id', (req, res)=> {
     res.send('delete question' + req.params.id)
