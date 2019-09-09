@@ -23,6 +23,9 @@ router.get('/', async (req, res, next)=> {
         // console.log(query)
         let questions = await query.exec();
         // console.log(questions)
+        // console.log(questions.number)
+        let category = await Category.find()
+        // console.log(category)
         res.render('question/question_list', { 
           questions : questions,
           searchOptions : req.query
@@ -83,39 +86,85 @@ router.post('/new', async (req, res, next)=> {
 //router address localhost:4121/question/:id
 //descriptions: Show Detail Question Information
 //comments: Show detail information of a Question
-router.get('/:id', (req, res)=> {
-    res.send('Show question' + req.params.id)
+router.get('/:id', async (req, res, next)=> {
+    try {
+        const question = await Question.findById(req.params.id)
+        const category = await Category.findById(question.type)
+        res.render('question/question_detail', {
+                  category : category,
+                  question: question
+        })
+      } catch (err) {
+        console.log(err)
+        res.redirect('/')
+      }
 })
 
 //router address localhost:4121/question/:id
 //descriptions: Show Detail Question Form
 //comments: Show detail information of a Question
-router.get('/:id/edit', async (req, res)=> {
+router.get('/:id/edit', async (req, res, next)=> {
     try {
-        console.log(req.params.id)
+        // console.log(req.params.id)
         let question = await Question.findById(req.params.id)
-        console.log(question.type)
+        // console.log(question.type)
         let category  = await Category.findById(question.type)
-        console.log(category.type_name)
+        // console.log(category.type_name)
         res.render('question/edit_question', { question: question,  category:category });
+        // console.log(question)
     } catch(err) {
-                    console.log('err during during 4121/question/:id/edit '+err);
-                    res.redirect('/question')
+                console.log('err during during 4121/question/:id/edit '+err);
+                res.redirect('/question')
     }
 })
 
 //router address localhost:4121/question/:id (Behind the Scene)
 //descriptions: Update Detail Question Information
 //comments: Change detail information of a Question
-router.put('/:id', (req, res)=> {
-    res.send('Update question' + req.params.id)
-})
+router.put('/:id', async (req, res, next)=> {
+    let question 
+    try { 
+        question = await Question.findById(req.params.id)
+                   question.title = req.body.title,
+                   question.description = req.body.description,
+                   question.tip = req.body.tip,
+                   question.analyze = req.body.analyze,
+                   question.solution = req.body.solution,
+                   await question.save()
+        res.redirect(`/question`)
+    } 
+    catch(err) {
+        if (question == null) {
+           console.log('err during during put 4121/question/:id can not find this question on exist database'+err);
+           res.redirect('/')
+        } else {
+          console.log('err during during 4121/category/:id update specific question infromation '+err);
+          res.redirect('/')
+        }
+    }
+});
 
 //router address localhost:4121/question/:id (Behind the Scene)
 //descriptions: Delete Specific Question Information
-//comments: Show detail information of a Question
-router.delete('/:id', (req, res)=> {
-    res.send('delete question' + req.params.id)
-})
+//comments: Detail this question from database
+router.delete('/:id', async (req, res, next)=> {
+    let question
+    try {
+        let deletequestionid = req.params.id
+        question = await Question.findById(deletequestionid)
+                   await question.remove()
+        res.redirect('/question')
+    } 
+    catch(err) {
+        if (question == null) {
+           console.log('err during during delete 4121/category/:id can not this question on exist database'+err);
+           res.redirect('/')
+        } else {
+          console.log('err during during 4121/category/:id delete question '+err);
+          res.redirect('/question')
+        }
+      }
+});
+
 
 module.exports = router;

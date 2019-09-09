@@ -16,7 +16,7 @@ router.get('/', async (req, res, next)=> {
       searchOptions.type_name = new RegExp(req.query.type_name, 'i')
   }
   try {
-    console.log(searchOptions)
+    // console.log(searchOptions)
     const categories = await Category.find(searchOptions).sort({category_name:'asc',type_name:'asc'});
     // console.log(categories)
     res.render('category/homepage', { 
@@ -48,7 +48,7 @@ router.post('/new', async (req, res, next)=> {
   })
   try {  
         const newCategory = await category.save()
-        res.redirect('/category')
+        res.redirect('/category/new')
   } 
   catch(err) {
         console.log('err during during post 4121/category/new create new category '+err);
@@ -66,11 +66,11 @@ router.get('/:id', async (req, res, next)=> {
     try {
       const category = await Category.findById(req.params.id)
       // console.log(category.category_name)
-      const questions = await Question.find({type : category.id})
+      const question = await Question.find({type : category.id})
       // console.log(questions)
       res.render('category/show_type_question', {
                 category : category,
-                questions: questions
+                question: question
       })
     } catch (err) {
       console.log(err)
@@ -99,12 +99,13 @@ router.put('/:id/edit', async (req, res, next)=> {
   let category 
   try { 
       category = await Category.findById(req.params.id)
+                 category.category_name = req.body.category_name,
                  category.type_name = req.body.type_name
                  await category.save()
       res.redirect(`/category/${category.id}`)
   } 
   catch(err) {
-      if (author == null) {
+      if (category == null) {
          console.log('err during during put 4121/category/:id can not find category-type on exist database'+err);
          res.redirect('/')
       } else {
@@ -122,8 +123,8 @@ router.delete('/:id', async (req, res, next)=> {
   try {
       let deletecategoryid = req.params.id
       category = await Category.findById(deletecategoryid)
-      console.log(category)
-      console.log(category.id)
+      // console.log(category)
+      // console.log(category.id)
                  await category.remove()
       res.redirect('/category')
   } 

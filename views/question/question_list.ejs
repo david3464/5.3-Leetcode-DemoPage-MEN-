@@ -16,7 +16,6 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">Title</th>
-            <th scope="col">Category-Type</th>
             <th scope="col">View</th>
             <th scope="col">Edit</th>
             <th scope="col">Delete</th>
@@ -27,7 +26,6 @@
             <tr>
               <th scope="row"><%=questions[i].number%></th>
               <td><%= questions[i].title%></td>
-              <td><%= questions[i].type%></td>      
               <td><a href="/question/<%=questions[i].id%>">View</a></td>
               <td><a href="/question/<%=questions[i].id%>/edit">Edit</a></td>      
               <td><%- include('../partials/_delete_form', 
