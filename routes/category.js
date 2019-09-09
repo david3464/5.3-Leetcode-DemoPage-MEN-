@@ -6,7 +6,7 @@ Category = require('../models/Category');
 //router address localhost:4121/category/:category_name/:type_name
 //descriptions: Show Specific Category
 //comments:demo all the question belong to this category
-router.get('/:category_name/:type_name', function(req, res, next) {
+router.get('/:category_name/:type_name', (req, res, next)=> {
   res.render('question/question_list');
 });
 
@@ -39,7 +39,7 @@ router.get('/', async (req, res, next)=> {
 //router address localhost:4121/category/new
 //descriptions: Register Demo Page
 //comments: show register demo form
-router.get('/new', function(req, res, next) {
+router.get('/new', (req, res, next)=> {
   res.render('category/register_type', { category: new Category() });
 });
 
@@ -65,5 +65,20 @@ router.post('/new', async (req, res, next)=> {
   }
 });
 
+router.get('/:id', (req, res, next)=> {
+  res.send('Show Category' + req.params.id)
+});
+
+router.get('/:id/update', (req, res, next)=> {
+  res.send('Edit Category' + req.params.id)
+});
+
+router.put('/:id', (req, res, next)=> {
+  res.send('Update Category' + req.params.id)
+});
+
+router.delete('/:id', (req, res, next)=> {
+  res.send('Delete Category' + req.params.id)
+});
 
 module.exports = router;
