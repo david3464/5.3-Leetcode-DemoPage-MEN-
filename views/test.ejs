@@ -1,31 +1,5 @@
-<div class="row mt-5">
-    <div class="col-md-6 m-auto">
-        <div class="card card-body">
-            <h1 class="text-center mb-3">
-                <i class="fas fa-user-plus"></i>Edit Specific Question
-                </h1>
-                <form action="/question/<%= question.id %>?_method=put" method="post">
-                    <%-include('_new_question_register_page')%>
-                    <a href="/question/<%= question.id %>"> Go Back To Home Page</a>
-                    <button type="submit">Update Question Info</button>
-                </form>
-            </h1>
-        </div>
-    </div>
-</div>
-
-
-<script> document.title = 'Create New Question Pages' </script>
-
-<div class="form-group">
-    <label for="exampleFormControlSelect1">Category-Type</label>
-    <select class="form-control" id="exampleFormControlSelect1" name="type">
-        <% categories.forEach(category => { %>
-            <% if (category.id === question.type) { %> 
-                <option selected label="<%= category.category_name%>/<%= category.type_name%>" value="<%=category.id %>">
-            <%} else {%>
-                <option label="<%= category.category_name%>/<%= category.type_name%>" value="<%=category.id %>">
-            <% } %>
-        <%})%>
-    </select>
-</div>
+<% classes.forEach(classes => { %>
+    <div><%= classes.title %></div>
+    <div><%= classes.description %></div>
+    <div><%= classes.author %></div>
+    <% }) %>

@@ -1,0 +1,10 @@
+<h2><%= category.category_name %></h2>
+<h2><%= category.type_name %></h2>
+<a href="/category/<%=category.id%>/edit">Edit</a>
+
+<% questions.forEach(questions => { %>
+    <div><%= questions.id %></div>
+    <div><%= questions.number %></div>
+    <div><%= questions.title %></div>
+    <div><%= category.type_name %></div>
+    <% }) %>
