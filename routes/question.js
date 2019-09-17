@@ -100,7 +100,7 @@ router.get('/:id', async (req, res, next)=> {
       }
 })
 
-//router address localhost:4121/question/:id
+//router address localhost:4121/question/:id/edit
 //descriptions: Show Detail Question Form
 //comments: Show detail information of a Question
 router.get('/:id/edit', async (req, res, next)=> {
