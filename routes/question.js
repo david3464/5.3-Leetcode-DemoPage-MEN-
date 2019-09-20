@@ -58,7 +58,7 @@ router.get('/new', async (req, res, next)=> {
 
 //router address behind the scene
 //descriptions: Obtain Registered Question Information
-//comments: get all required infromation
+//comments: get all required information
 router.post('/new', async (req, res, next)=> {        
     let question = new Question ({
         title: req.body.title,
@@ -138,7 +138,7 @@ router.put('/:id', async (req, res, next)=> {
            console.log('err during during put 4121/question/:id can not find this question on exist database'+err);
            res.redirect('/')
         } else {
-          console.log('err during during 4121/category/:id update specific question infromation '+err);
+          console.log('err during during 4121/category/:id update specific question information '+err);
           res.redirect('/')
         }
     }
