@@ -1,3 +1,21 @@
-<%-include('_Demo_description_Form')%>
+<hr>
+<input type="checkbox" id="input1"
+onmouseover="getElementById('div1').style.display='block';" 
+onmouseout="getElementById('div1').style.display='none';"/>
+       <br><br><br>
+<div id="div1" style="display:none">
+    为了您的信息安全
+</div>
 
+<br><hr>
+
+
+
+<%-include('_Demo_description_Form')%>
 <script> document.title = 'Question 7 Reverse Integer Demo Page' </script>
+<script> 
+  var oInp1 = document.getElementById('input1');
+  var oDiv1 = document.getElementById('div1');
+  // oInp1.onmouseover = "oDiv1.style.display='block';"
+  // oInp1.onmouseout = "oDiv1.style.display='none';"
+</script>
