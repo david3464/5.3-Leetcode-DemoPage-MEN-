@@ -1,21 +1,21 @@
+<head>
+<style>
+      button {
+          border: 1px solid #ccc;
+      }
+</style>
+<script src="/javascripts/demo/question7.js"></script>
+</head>
 <hr>
-<input type="checkbox" id="input1"
-onmouseover="getElementById('div1').style.display='block';" 
-onmouseout="getElementById('div1').style.display='none';"/>
-       <br><br><br>
-<div id="div1" style="display:none">
-    为了您的信息安全
-</div>
+Input Only One Number: <input type="number" placeholder="Input Your Lucky Num." ondrop="return false" onpaste="return false" 
+       id="input"><br><br>
+<button id="submit">Submit</button><br><br>
+
+You Input No. Show Here: <div class="div1"id="demo1" style="border:1px solid black"></div>
+Answer Will Be Show Here: <div class="div1"id="demo2" style="border:1px solid black"></div>
+
+
 
 <br><hr>
+  <%-include('_Demo_description_Form')%>
 
-
-
-<%-include('_Demo_description_Form')%>
-<script> document.title = 'Question 7 Reverse Integer Demo Page' </script>
-<script> 
-  var oInp1 = document.getElementById('input1');
-  var oDiv1 = document.getElementById('div1');
-  // oInp1.onmouseover = "oDiv1.style.display='block';"
-  // oInp1.onmouseout = "oDiv1.style.display='none';"
-</script>
