@@ -32,8 +32,10 @@ window.onload = function() {
       var iv = input.value;
     if(iv === "") return   alert('this is not valid');
     //* Important Notice when input from HTML is string 
-    if(iv === "0" ) return   alert('reverse 0 is 0, please input other number to verify'); 
-    // console.log(iv);
+    if(iv === "0") return   alert('reverse 0 is 0, please input other number to verify'); 
+    if(parseInt(iv) >= 2147483648 ) return   alert('the number is out of positive range, the answer is return 0 anyway！'); 
+    if(parseInt(iv) <= -2147483648 ) return   alert('the number is out of negative range, the answer is return 0 anyway！'); 
+    // console.log(iv);&& "
     // console.log(typeof iv); 
     // console.log(Reverse_Integer(iv));
     submit.onclick = function (){
