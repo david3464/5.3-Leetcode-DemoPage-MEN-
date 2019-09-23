@@ -30,7 +30,9 @@ window.onload = function() {
       var demo1 = document.getElementById("demo1");
       var demo2 = document.getElementById("demo2");
       var iv = input.value;
-    if(iv === "") return   alert('this is not valid'); 
+    if(iv === "") return   alert('this is not valid');
+    //* Important Notice when input from HTML is string 
+    if(iv === "0" ) return   alert('reverse 0 is 0, please input other number to verify'); 
     // console.log(iv);
     // console.log(typeof iv); 
     // console.log(Reverse_Integer(iv));
