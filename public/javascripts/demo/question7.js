@@ -1,26 +1,26 @@
 document.title = 'Question 7 Reverse Integer Demo Page';
 var Reverse_Integer = function(num) {
-  var y;
+  var result= "";
   if(num < 0){
-    y=num.toString().split('').reverse();
+    result=num.toString().split('').reverse();
     // console.log(y);
-    y.unshift('-');
-    y.pop();
-    y = parseInt(y.join(''));
+    result.unshift('-');
+    result.pop();
+    result = parseInt(result.join(''));
     //Check for 32 bit outside of bounds
-    if(y < -2147483648 ) {
+    if(result < -2147483648 ) {
         return 0
     }
     //positive case start here
   } else {
-    y = num.toString().split('').reverse().join('');
-    y = parseInt(y)
+    result = num.toString().split('').reverse().join('');
+    result = parseInt(result)
     //Check for 32 bit outside of bounds
-    if (y > 2147483648) {
+    if (result > 2147483648) {
         return 0
     } 
   }
-  return y
+  return result
 }     
   // console.log(Reverse_Integer(123));
 window.onload = function() {
@@ -41,8 +41,8 @@ window.onload = function() {
     submit.onclick = function (){
       var oiv = parseInt(iv);
       var ov= parseInt(Reverse_Integer(iv));
-      console.log(typeof oiv);
-      console.log(typeof ov);
+      // console.log(typeof oiv);
+      // console.log(typeof ov);
       demo1.innerHTML = oiv;
       demo2.innerHTML = ov;
     }
