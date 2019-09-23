@@ -24,11 +24,12 @@ router.get('/', async (req, res, next)=> {
         let questions = await query.exec();
         // console.log(questions)
         // console.log(questions.number)
-        let category = await Category.find()
+        // let category = await Category.find()
         // console.log(category)
         res.render('question/question_list', { 
           questions : questions,
-          searchOptions : req.query
+          searchOptions : req.query,
+        //   category : category
         })
     }
     catch(err) {
