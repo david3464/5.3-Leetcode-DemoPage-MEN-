@@ -22,7 +22,8 @@ var Reverse_Integer = function(num) {
   }
   return result
 }     
-  // console.log(Reverse_Integer(123));
+
+// console.log(Reverse_Integer(123));
 window.onload = function() {
   submit.addEventListener("click", function(){
       var input = document.getElementById("input");
@@ -40,7 +41,7 @@ window.onload = function() {
     // console.log(Reverse_Integer(iv));
     submit.onclick = function (){
       var oiv = parseInt(iv);
-      var ov= parseInt(Reverse_Integer(iv));
+      var ov= Reverse_Integer(parseInt(iv));
       // console.log(typeof oiv);
       // console.log(typeof ov);
       demo1.innerHTML = oiv;
