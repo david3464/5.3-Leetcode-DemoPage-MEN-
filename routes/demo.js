@@ -37,12 +37,25 @@ router.get('/9', async (req, res, next)=>{
   let question = await Question.find({number:'9'});
   // console.log(question);
   console.log(question[0].title);
-  res.render('demo/07Reverse_Integer',{question : question});
+  res.render('demo/09Parlindrome_Number',{question : question});
   } catch(err) {
-    console.log('err during during 4121/demo/07 (Reverse Integer) '+err);
+    console.log('err during during 4121/demo/09 (Parlindrome Number) '+err);
   }
 });
 
+//router address localhost:4121/demo/13 (Roman to Number)
+//descriptions: Demo Specific Question Information
+//comments: Detail this question and show animation in HTML
+router.get('/13', async (req, res, next)=>{
+  try {
+  let question = await Question.find({number:'13'});
+  // console.log(question);
+  console.log(question[0].title);
+  res.render('demo/13Roman_To_Number',{question : question});
+  } catch(err) {
+    console.log('err during during 4121/demo/13 (Roman To Number) '+err);
+  }
+});
 
 
 
